@@ -1,0 +1,11 @@
+Name: Requirements Checking
+Type: requirement
+Invented on: 2015-11-02
+Invented by: platschek
+Description: Each safety requirement \textbf{must} have a checking tag.
+Rationale: Every requirement is assigned a checking to allow verifying the
+ requirement during testing and integration phases of the development
+ life-cycle.
+Owner: development
+Status: not done
+Topic: Safety

@@ -10,5 +10,5 @@ Status: not done
 Priority: development:10
 Effort estimation: 8
 Topic: Basics
-Solved by: ConfigCheck ConfigDefault ConfigDevelopers
+Solved by: ConfigCheck ConfigDefault ConfigDevelopers ConfigSafety
 

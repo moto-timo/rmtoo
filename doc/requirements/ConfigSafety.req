@@ -1,0 +1,13 @@
+Name: Configuration of Safety Projects
+Type: requirement
+Invented on: 2015-11-05
+Invented by: platschek
+Description: It shall be possible to configure the project as a safety project.
+Rationale: In safety projects we need some tags to be mandatory for each
+ requirement that are not of big interest in non-safety projects.
+Owner: development
+Status: not done
+Priority: development:10
+Effort estimation: 13
+Topic: Safety
+Solved by: ReqTagChecking

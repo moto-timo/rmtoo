@@ -1,0 +1,4 @@
+Name: Safety Projects
+Text: This Section contains some requirements that are of interest for
+ safety projects but may be not very interessting for non-safety projects. 
+IncludeRequirements: full
