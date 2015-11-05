@@ -254,6 +254,9 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
             elif rattr == "Owner":
                 self.__fd.write("\\textbf{Owner:} & %s" %
                                 req.get_value("Owner"))
+            elif rattr == "Checking":
+                self.__fd.write("\\textbf{Checking:} & %s" %
+                                req.get_value("Checking"))
             elif rattr == "Invented on":
                 self.__fd.write("\\textbf{Invented on:} & %s "
                          % req.get_value("Invented on").strftime("%Y-%m-%d"))
