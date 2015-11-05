@@ -187,8 +187,8 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
         # Only output the depends on when there are fields for output.
         if len(req.incoming) > 0:
             # Create links to the corresponding labels.
-            self.__fd.write("\n\\textbf{Depends on:} ")
-            self.__fd.write(", ".join(["\\ref{%s} \\nameref{%s}" %
+            self.__fd.write("\n\\textbf{Depends on:}\\\\ \n \\hspace*{2.5cm}")
+            self.__fd.write("\\\\ \\hspace*{2.5cm} ".join(["\\ref{%s} \\nameref{%s}" %
                                 (latex2.__strescape(d.id),
                                  latex2.__strescape(d.id))
                                 for d in sorted(req.incoming,
@@ -197,9 +197,9 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
 
         if len(req.outgoing) > 0:
             # Create links to the corresponding dependency nodes.
-            self.__fd.write("\n\\textbf{Solved by:} ")
+            self.__fd.write("\n\\textbf{Solved by:} \\\\ \n \\hspace*{2.5cm}")
             # No comma at the end.
-            self.__fd.write(", ".join(["\\ref{%s} \\nameref{%s}" %
+            self.__fd.write("\\\\ \\hspace*{2.5cm}".join(["\\ref{%s} \\nameref{%s}" %
                                 (latex2.__strescape(d.id),
                                  latex2.__strescape(d.id))
                                 for d in sorted(req.outgoing,
