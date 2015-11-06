@@ -269,6 +269,10 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
                 self.__fd.write("\\textbf{Class:} & %s " % clstr)
             elif rattr == "Type":
                 self.__fd.write("\\textbf{Type:} & %s " % rtype)
+            elif rattr == "Reviewed by":
+                #if Reviewed by tag is found -- skip, because it is handled
+                #below.
+                break;
             else:
                 # This only happens when a wrong configuration is supllied.
                 raise RMTException(85, "Wrong latex2 output configuration "
@@ -284,6 +288,10 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
             i += 1
 
         self.__fd.write("\end{tabular}\end{center} }\n\n")
+
+        if req.is_val_av_and_not_null("Reviewed by"):
+            self.__fd.write("\n\\textbf{Reviewed by:} %s\n"
+                     % req.get_value("Reviewed by"))
 
     def cmad_topic_continuum_pre(self, _):
         '''Write out the one and only dependency to all the requirements.'''
