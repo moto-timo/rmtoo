@@ -1,0 +1,13 @@
+Name: Reviewed by for individual requirements
+Type: requirement
+Invented on: 2015-11-06
+Invented by: platschek
+Description: Each safety requirement \textbf{must} have a Reviewed by tag.
+Rationale: The Reviewed by tag allows fine-grain review on a per-requirement
+ basis.
+Note: This can be used to check if all requirements are checked by adding a
+ nobody entry to the list of reviewers and remove it as soon as full review
+ of all requirements is wanted.
+Owner: development
+Status: not done
+Topic: Safety

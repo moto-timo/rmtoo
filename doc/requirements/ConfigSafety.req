@@ -10,4 +10,4 @@ Status: not done
 Priority: development:10
 Effort estimation: 13
 Topic: Safety
-Solved by: ReqTagChecking
+Solved by: ReqTagChecking ReqTagReviewedBy
