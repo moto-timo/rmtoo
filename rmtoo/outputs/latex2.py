@@ -273,6 +273,10 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
                 #if Reviewed by tag is found -- skip, because it is handled
                 #below.
                 break;
+            elif rattr == "Argued by":
+                #if Reviewed by tag is found -- skip, because it is handled
+                #below.
+                break;
             else:
                 # This only happens when a wrong configuration is supllied.
                 raise RMTException(85, "Wrong latex2 output configuration "
@@ -292,6 +296,14 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
         if req.is_val_av_and_not_null("Reviewed by"):
             self.__fd.write("\n\\textbf{Reviewed by:} %s\n"
                      % req.get_value("Reviewed by"))
+
+        if req.is_val_av_and_not_null("Argued by"):
+            alist = req.get_value("Argued by").split(", ")
+            arguments = ""
+            for a in alist:
+               arguments = arguments + "\\ref{OGSN_" + a + "} "
+            self.__fd.write("\n\\textbf{Argued by:} %s\n"
+                     % arguments)
 
     def cmad_topic_continuum_pre(self, _):
         '''Write out the one and only dependency to all the requirements.'''
