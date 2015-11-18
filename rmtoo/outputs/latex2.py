@@ -21,15 +21,11 @@ from rmtoo.lib.CreateMakeDependencies import CreateMakeDependencies
 class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
     default_config = { "req_attributes":
                        ["Id", "Priority", "Owner", "Invented on",
-                        "Invented by", "Status", "Class"] }
-
-    level_names = [
-        "chapter",
-        "section",
-        "subsection",
-        "subsubsection",
-        "paragraph",
-        "subparagraph" ]
+                        "Invented by", "Status", "Class"], 
+                       "level_names":
+                       ["chapter", "section", "subsection", "subsubsection",
+                        "paragraph", "subparagraph" ]
+                     }
 
     def __init__(self, oconfig):
         '''Create a graph output object.'''
@@ -44,6 +40,10 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
                 ["Id", "Priority", "Owner", "Invented on",
                         "Invented by", "Status", "Class"])
         self.__level = -1
+        if not self._config.is_available('level_names'):
+            self._config.set_value('level_names',
+                ["chapter", "section", "subsection", "subsubsection",
+                        "paragraph", "subparagraph" ])
 
     @staticmethod
     def __strescape(string):
@@ -68,7 +68,7 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
 
         self.__fd.write("\%s{%s}\label{CONSTRAINT%s}\n"
                         "\\textbf{Description:} %s\n"
-                 % (self.level_names[1],
+                 % (self._config.get_value("level_names")[1],
                     cnstrt.get_value("Name").get_content(),
                     cname, cnstrt.get_value("Description").get_content()))
 
@@ -87,7 +87,7 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
             tracer.debug("No constraints to output.")
             return
 
-        self.__fd.write("\\%s{Constraints}\n" % self.level_names[0])
+        self.__fd.write("\\%s{Constraints}\n" % self._config.get_value("level_names")[0])
         for cname, cnstrt in sorted(constraints.iteritems()):
             self.__output_latex_one_constraint(cname, cnstrt)
 
@@ -100,7 +100,7 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
 
         self.__fd.write("\%s{%s}\label{TESTCASE%s}\n"
                         "\\textbf{Description:} %s\n"
-                 % (self.level_names[1],
+                 % (self._config.get_value("level_names")[1],
                     cnstrt.get_value("Name").get_content(),
                     cname, cnstrt.get_value("Description").get_content()))
 
@@ -123,7 +123,7 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
             tracer.debug("No testcases to output.")
             return
 
-        self.__fd.write("\\%s{Test Cases}\n" % self.level_names[0])
+        self.__fd.write("\\%s{Test Cases}\n" % self._config.get_value("level_names")[0])
         for cname, cnstrt in sorted(testcases.iteritems()):
             self.__output_latex_one_testcase(cname, cnstrt)
 
@@ -151,7 +151,7 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
 
     def topic_name(self, name):
         '''Output the topic name.'''
-        self.__fd.write("\\%s{%s}\n" % (self.level_names[self.__level], name))
+        self.__fd.write("\\%s{%s}\n" % (self._config.get_value("level_names")[self.__level], name))
 
     def topic_text(self, text):
         '''Write out the given text.'''
@@ -171,7 +171,7 @@ class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
         self.__fd.write("%% REQ '%s'\n" % req.id)
 
         self.__fd.write("\%s{%s}\label{%s}\n\\textbf{Description:} %s\n"
-                 % (self.level_names[self.__level + 1],
+                 % (self._config.get_value("level_names")[self.__level + 1],
                     req.get_value("Name").get_content(),
                     latex2.__strescape(req.id),
                     req.get_value("Description").get_content()))
