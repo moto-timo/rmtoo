@@ -19,13 +19,6 @@ from rmtoo.lib.logging import tracer
 from rmtoo.lib.CreateMakeDependencies import CreateMakeDependencies
 
 class latex2(StdOutputParams, ExecutorTopicContinuum, CreateMakeDependencies):
-    default_config = { "req_attributes":
-                       ["Id", "Priority", "Owner", "Invented on",
-                        "Invented by", "Status", "Class"], 
-                       "level_names":
-                       ["chapter", "section", "subsection", "subsubsection",
-                        "paragraph", "subparagraph" ]
-                     }
 
     def __init__(self, oconfig):
         '''Create a graph output object.'''
