@@ -24,3 +24,14 @@ Happy requirements writing!
 Andreas Florath
 sf@flonatel.org
 2010-09-10
+
+===
+
+The python-central build helper is deprecated and should be
+replaced with dh_python2.
+
+https://wiki.debian.org/Python/TransitionToDHPython2?action=show&redirect=Python%2FPyCentral2DhPython2
+
+Tim Orling
+timothy.t.orling@linux.intel.com
+2017-03-01
