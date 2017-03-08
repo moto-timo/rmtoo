@@ -10,7 +10,7 @@
 '''
 
 from optparse import OptionParser
-import distutils
+import distutils.sysconfig
 
 class CmdLineParams:
     '''Utility class for handling the old style command line
